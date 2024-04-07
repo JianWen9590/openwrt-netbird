@@ -25,7 +25,7 @@ def fetch_latest_release():
 
     tag_name = release["tag_name"]
     # v1.0.0 -> 1.0.0
-    pkg_version = tag_name[1:]
+    pkg_version = tag_name[1:] if tag_name.startswith("v") else tag_name
     tarball_url = f"https://github.com/{REPO}/archive/refs/tags/{tag_name}.tar.gz"
 
     res = session.get(tarball_url, headers=headers)
